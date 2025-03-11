@@ -1,4 +1,4 @@
-// Your code here.
+
 // Get all cube elements
 const cubes = document.querySelectorAll('.cube');
 
@@ -16,11 +16,15 @@ function handleMouseDown(event) {
     const initialY = event.clientY;
     const cubeRect = cube.getBoundingClientRect();
 
+    // Set the cube's offset
+    const offsetX = event.clientX - cubeRect.left;
+    const offsetY = event.clientY - cubeRect.top;
+
     // Function to handle mouse move event
     function handleMouseMove(event) {
         // Calculate the new cube position
-        const newX = initialX + event.clientX - cubeRect.left;
-        const newY = initialY + event.clientY - cubeRect.top;
+        const newX = event.clientX - offsetX;
+        const newY = event.clientY - offsetY;
 
         // Update the cube's position
         cube.style.top = `${newY}px`;
